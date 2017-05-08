@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title>Self Test 1</title>
+		<style>
+			[ng\:cloak],[ng-cloak], .ng-cloak{
+				display:none;
+			}
+			.redText{
+				color : red;
+			}
+			.greenText{
+				color : green;
+			}
+		</style>
+	</head>
+	<body ng-app = "testApp1" ng-cloak>
+		<div ng-controller = "testController">
+			First person: <input type="text" ng-model = "num1"><br>
+			Second Num: <input type="text" ng-model = "num2"><br>
+			<button ng-click="calculate()">Calculate</button><br>
+			<input type="text" ng-keydown="keydown($event)" ng-model="confirmed" value="aaaa"><br>
+			<label>
+				{{kdKey}}
+			</label><br>
+			<span ng-bind="newNum">
+			</span>
+			
+			<h3>{{eoBishop.length}} people in 81 bishop</h3>
+				<table >
+				
+				<tr ng-repeat-start="person in eoBishop" ng-class-even="'redText'" ng-class-odd="'greenText'">
+					<td>
+						name:
+					</td>
+					<td>
+						{{person.person}}
+					</td>
+					
+				</tr>
+				<tr ng-repeat-end="person in eoBishop">
+					<td>
+					stat:
+					</td>
+					<td>
+						{{person.stat}}
+					</td>
+				</tr>
+				</table></br>
+				
+				
+				
+				<span>
+					Test checkbox <input type="checkbox" ng-model = "checkBox"></input>
+				</span>
+				<div ng-include="'sub1.html'"></div>
+				<ng-include src= "testShow()"></ng-include>
+				
+				</br>
+				</br>
+				<label>
+					1-4
+				</label></br>
+				<input type="text" ng-model = "number">
+				</br>
+				<div ng-switch="number">
+				<span ng-switch-when="1">
+					ha
+				</span>
+				<span ng-switch-when="2">
+					haha
+				</span>
+				<span ng-switch-when="3">
+					hahaha
+				</span>
+				<span ng-switch-when="4">
+					hahahaha
+				</span>
+				<span ng-switch-default>
+					hehe
+				</span>
+				</div>
+				</br>
+				<button ng-click="switchStat">Switch</button></br>
+				<input type="checkbox" ng-model="buttonStat"></br>
+				<button ng-disabled = "buttonStat">
+					disabled?
+				</button></br>
+				
+				<input type="checkBox" ng-model="input1"/>
+				
+				<p ng-hide="!input1">
+					is greater than 10
+				</p><p ng-hide="input1">
+					is not greater than 10
+				</p>
+				</br>
+				<select ng-model="textColor">
+					<option value="redText">red</option>
+					<option value="greenText">Forgive</option>
+				</select>
+				</br>
+				<p ng-class="textColor">
+					some Text
+				</p>
+		</div>
+	
+		<!--Script Import@START-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="js/selfTest.js"></script>
+		<!--Script Import@End-->
+		
+		
+	</body>
+</html>

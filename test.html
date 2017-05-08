@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="app1" ng-init="person = {fName: 'Derek', lName: 'Banas'}; capitals = [{
+city: 'Montogomery', state: 'Alabama'},{city: 'Toronto', state: 'Ontario'},{city: 'Niagara
+', state: 'Ontario'}]" ng-cloak>
+	<head>
+		<title>
+			Angular JS
+		</title>
+		<style>
+			[ng\:cloak],[ng-cloak], .ng-cloak{
+				display:none;
+			}
+		</style>
+	</head>
+	
+	<body >
+		<div ng-controller = "controller1">
+			<span>
+				Values:
+			</span><br>
+				<input type="text" ng-model="first"><br>
+				<input type="text" ng-model="second"><br>
+				<button ng-click = "updateValue()">Sum</button><br>
+				<br>
+				{{calculation}}
+				<p>
+					{{person.fName + " " + person.lName}}, your first value is {{first}}, 
+					you came from {{capitals[0].city}}, {{cap}}
+				</p>
+				<ul>
+					<li ng-repeat="capidal in capitals">{{'City: ' + capidal.city +
+					', State: ' + capidal.state}}</li>
+				</ul>
+				{{randomNum1}}<br>
+				{{randomNum2}}
+		</div>
+	
+	
+	<!--script import@START-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+		</script>
+		<script src="js/testAngular.js">
+		</script>
+	<!--script import@END-->	
+	</body>
+</html>
