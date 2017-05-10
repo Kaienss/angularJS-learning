@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title>Self Test 1</title>
+		<style>
+			[ng\:cloak],[ng-cloak], .ng-cloak{
+				display:none;
+			}
+			.redText{
+				color : red;
+			}
+			.greenText{
+				color : green;
+			}
+			input.ng-dirty.ng-invalid{
+				border.color:red;
+			}
+		</style>
+	</head>
+	<body ng-app="Anvali" ng-cloak>
+	<div ng-controller="formController">
+		<h3>Skill List</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Topic</th>
+					<th>Learned</th>
+				</tr>
+			</thead>
+			<tr ng-repeat="skill in skills">
+				<td>{{skill.topic}}</td>
+				<td><input type="checkbox" ng-model="skill.learned" /></td>
+			</tr>
+		</table><br/>
+		<label>
+			New Topic: <input type="text" ng-model="newTopic" placeholder="Enter new topic"/>
+		</label><br/>
+		<button ng-click="addTopic(newTopic)">Add New</button>
+		<h4>{{missingNewTopicError}}</h4>
+	</div>
+	
+		<!--Script Import@START-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="js/Angularvalidation.js"></script>
+		<!--Script Import@End-->
+		
+		
+	</body>
+</html>
