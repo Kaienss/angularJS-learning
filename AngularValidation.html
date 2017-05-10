@@ -15,6 +15,9 @@
 			input.ng-dirty.ng-invalid{
 				border.color:red;
 			}
+			.error-message{
+				color: red;
+			}
 		</style>
 	</head>
 	<body ng-app="Anvali" ng-cloak>
@@ -38,7 +41,53 @@
 		<button ng-click="addTopic(newTopic)">Add New</button>
 		<h4>{{missingNewTopicError}}</h4>
 	</div>
-	
+	<div ng-controller="userController" style="border:1px solid black">
+		<form name="userForm" ng-submit="saveUser(userInfo)">
+			<label>First Name: </label><br/>
+			<input type="text" name="fName" 
+			ng-model="userInfo.fName" 
+			ng-required="true" ng-minlength="2"
+			/><br/>
+			<span class="error-message" 
+			ng-show="userForm.fName.$dirty && userForm.fName.$error.required"
+			>Must Enter a First Name</span><br/>
+			
+			<span class="error-message"
+			ng-show="userForm.fName.$dirty && userForm.fName.$error.minlength">
+			Minimum of 2 Characters</span><br/>
+			
+			<label>Last Name: </label><br/>
+			<input type="text" name="lName" 
+			ng-model="userInfo.lName" 
+			ng-required="true" ng-minlength="2"
+			/><br/>
+			<span class="error-message"
+			ng-show="userForm.lName.$dirty && userForm.lName.$error.required"
+			>Must Enter a First Name</span><br/>
+			
+			<span class="error-message"
+			ng-show="userForm.lName.$dirty && userForm.lName.$error.minlength">
+			Minimum of 2 Characters</span><br/>
+			<label>Subscribe</label>
+			<input type="checkbox" name="subscribe" ng-model="userInfo.subscribe" 
+			
+			/><br/>
+			<div ng-show="userInfo.subscribe">
+			<label>Method</label>
+			
+			<select name="dMethod" ng-model="userInfo.dMethod" >
+				<option value="mail">mail</option>
+				<option value="email">email</option>
+			</select><br/>
+			</div>
+			<input type="submit" ng-disabled="userForm.$invalid" value="save"/><br/>
+			<ul>
+				<li ng-repeat="user in users">
+					{{user.fName}};{{user.lName}};{{user.subscribe}};{{user.dMethod}}
+				</li>
+			</ul>
+		</form>
+	<div>
 		<!--Script Import@START-->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="js/Angularvalidation.js"></script>

@@ -16,5 +16,32 @@ Anvali.controller("formController",function($scope){
 	{topic: "Mysql", learned: true},
 	];
 	$scope.newTopic = "";
+	$scope.missingNewTopicError = "";
+	$scope.addTopic = function(newTopic){
+		if(!(newTopic===undefined || newTopic==="")){
+			
+			$scope.skills.push({topic: newTopic, learned: true});
+			$scope.missingNewTopicError = "";
+		}else{
+			$scope.missingNewTopicError = "Please enter a topic";
+		}
+	}
+});
+
+Anvali.controller("userController", function($scope){
+	
+	$scope.users = [
+	{fName:"fName", lName:"lName", subscribe:"subscribe", dMethod:"delivery method"}
+	];
+	
+	$scope.saveUser = function(userInfo){
+		if($scope.userForm.$valid){
+			$scope.users.push({fName:userInfo.fName, lName: userInfo.lName, subscribe:userInfo.subscribe,dMethod:userInfo.dMethod});
+			console.log("saved");
+		}else{
+			console.log("Error");
+		}
+		
+	}
 	
 });
